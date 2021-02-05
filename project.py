@@ -24,8 +24,8 @@ def main_menu():
 
         mx, my = pygame.mouse.get_pos()
 
-        button_1 = pygame.Rect(50, 100, 200, 50)
-        button_2 = pygame.Rect(50, 200, 200, 50)
+        button_1 = pygame.Rect(170, 140, 200, 50)
+        button_2 = pygame.Rect(170, 250, 200, 50)
         if button_1.collidepoint((mx, my)):
             if click:
                 game()
@@ -35,8 +35,8 @@ def main_menu():
         pygame.draw.rect(screen, (255, 0, 0), button_1)
         pygame.draw.rect(screen, (255, 0, 0), button_2)
         
-        draw_text('Games', font, (255,255,255), screen, 100, 100)
-        draw_text('Options', font, (255,255,255), screen, 100, 200)
+        draw_text('Games', font, (255,255,255), screen, 245, 160)
+        draw_text('Options', font, (255,255,255), screen, 245, 270)
 
         click = False
         for event in pygame.event.get():
@@ -59,6 +59,7 @@ def game():
     while running:
         screen.fill((0,0,0))
         draw_text('Games', font, (255,255,255), screen, 20, 20)
+        draw_text('Press ESC to return', font, (255,255,255), screen, 350, 20)
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
@@ -76,7 +77,8 @@ def options():
     while running:
         screen.fill((0,0,0))
  
-        draw_text('options', font, (255, 255, 255), screen, 20, 20)
+        draw_text('Options', font, (255, 255, 255), screen, 20, 20)
+        draw_text('Press ESC to return', font, (255,255,255), screen, 350, 20)
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
