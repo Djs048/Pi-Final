@@ -58,17 +58,32 @@ def game():
     running = True
     while running:
         screen.fill((0,0,0))
-        draw_text('Games', font, (255,255,255), screen, 20, 20)
-        draw_text('Press ESC to return', font, (255,255,255), screen, 350, 20)
+        mx, my = pygame.mouse.get_pos()
+
+        click = False
         for event in pygame.event.get():
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
-               if event.key == K_ESCAPE:
+                if event.key == K_ESCAPE:
                    running = False
         
+        draw_text('Games', font, (255,255,255), screen, 20, 20)
+        draw_text('Press ESC to return', font, (255,255,255), screen, 350, 20)
 
+        button_3 = pygame.Rect(170, 140, 200, 50)
+        if button_3.collidepoint((mx, my)):
+            if click:
+                Table_Tennis()
+                
+        pygame.draw.rect(screen, (255, 0, 0), button_3)
+        draw_text('Table Tennis', font, (255,255,255), screen, 230, 160)
+
+        
         pygame.display.update()
         mainClock.tick(60)
         
@@ -89,7 +104,23 @@ def options():
         
         pygame.display.update()
         mainClock.tick(60)
-    
+        
+def Table_Tennis():
+    running = True
+    while running:
+        screen.fill((0,0,0))
+        draw_text('Press ESC to return', font, (255,255,255), screen, 350, 20)
+        
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    running = False
+
+        pygame.display.update()
+        mainClock.tick(60)
 
                    
 main_menu()
