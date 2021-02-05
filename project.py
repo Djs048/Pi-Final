@@ -14,13 +14,28 @@ def draw_text(text, font, color, surface, x, y):
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
 
-click = False
+
     
 def main_menu():
     while True:
         
         screen.fill((0,0,0))
         draw_text('Main Menu', font, (255,255,255), screen, 20, 20)
+
+
+        click = False
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN:
+               if event.key == K_ESCAPE:
+                   pygame.quit()
+                   sys.exit()
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    click = True
+        
 
         mx, my = pygame.mouse.get_pos()
 
@@ -38,18 +53,7 @@ def main_menu():
         draw_text('Games', font, (255,255,255), screen, 245, 160)
         draw_text('Options', font, (255,255,255), screen, 245, 270)
 
-        click = False
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == KEYDOWN:
-               if event.key == K_ESCAPE:
-                   pygame.quit()
-                   sys.exit()
-            if event.type == MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    click = True
+        
                     
         pygame.display.update()
         mainClock.tick(60)
