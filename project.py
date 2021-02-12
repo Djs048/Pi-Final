@@ -126,7 +126,8 @@ def Table_Tennis():
     
     while running:
         screen.fill((0,0,0))
-        draw_text('Press ESC to return and press spacebar to start', font, (255,255,255), screen, 200, 20)
+        draw_text('Press ESC to return. Press SPACEBAR to start', font, (255,255,255), screen, 200, 20)
+        draw_text('Player 1 use WASD to move. Player 2 use Arrow Keys to move.', font, (255,255,255), screen, 50, 60)
         keys = pygame.key.get_pressed()
         P1Score = "Score: {}".format(Player1_score)
         P2Score = "Score: {}".format(Player2_score)
@@ -177,7 +178,7 @@ def Table_Tennis():
                         round_end = False
                         Start = True
                 pygame.draw.rect(screen, (255, 0, 0), play_again_button)
-                draw_text("Play Again", font, (255,255,255), screen, 205, 290)
+                draw_text("Play Again", font, (255,255,255), screen, 210, 290)
                 
             elif (Player2_score == 3):
                 Start = False
@@ -191,7 +192,7 @@ def Table_Tennis():
                         round_end = False
                         Start = True
                 pygame.draw.rect(screen, (255, 0, 0), play_again_button)
-                draw_text("Play Again", font, (255,255,255), screen, 205, 290)
+                draw_text("Play Again", font, (255,255,255), screen, 210, 290)
                 
                 
                 
