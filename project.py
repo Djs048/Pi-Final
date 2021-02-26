@@ -134,10 +134,10 @@ def Snake():
     dis_height = 500
  
     font_style = pygame.font.SysFont("bahnschrift", 15)
-    score_font = pygame.font.SysFont("comicsansms", 35)
+    score_font = pygame.font.SysFont("arial", 35)
     
     def Your_score(score):
-        value = score_font.render("Your Score: " + str(score), True, white)
+        value = score_font.render("Score: " + str(score), True, white)
         screen.blit(value, [0, 0])
  
  
