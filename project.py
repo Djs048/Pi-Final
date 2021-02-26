@@ -85,7 +85,7 @@ def game():
             if click:
                 Table_Tennis()
 
-        button_4 = pygame.Rect(170, 190, 200, 50)
+        button_4 = pygame.Rect(170, 200, 200, 50)
         if button_4.collidepoint((mx, my)):
             if click:
                 Snake()
@@ -94,7 +94,7 @@ def game():
         draw_text('Table Tennis', font, (255,255,255), screen, 230, 160)
 
         pygame.draw.rect(screen, (255, 0, 0), button_4)
-        draw_text('Snake', font, (255, 255, 255), screen, 230, 160)
+        draw_text('Snake', font, (255, 255, 255), screen, 235, 220)
 
         
         pygame.display.update()
@@ -123,21 +123,21 @@ def Snake():
     white = (255, 255, 255)
     yellow = (255, 255, 102)
     black = (0, 0, 0)
-    red = (213, 50, 80)
+    red = (255, 0, 0)
     green = (0, 255, 0)
     blue = (50, 153, 213)
 
     snake_block = 10
     snake_speed = 15
 
-    dis_width = 600
-    dis_height = 400
+    dis_width = 500
+    dis_height = 500
  
-    font_style = pygame.font.SysFont("bahnschrift", 25)
+    font_style = pygame.font.SysFont("bahnschrift", 15)
     score_font = pygame.font.SysFont("comicsansms", 35)
     
     def Your_score(score):
-        value = score_font.render("Your Score: " + str(score), True, yellow)
+        value = score_font.render("Your Score: " + str(score), True, white)
         screen.blit(value, [0, 0])
  
  
@@ -149,7 +149,7 @@ def Snake():
  
     def message(msg, color):
         mesg = font_style.render(msg, True, color)
-        screen.blit(mesg, [dis_width / 6, dis_height / 3])
+        screen.blit(mesg, [dis_width / 15, dis_height / 3])
  
  
     def gameLoop():
@@ -171,8 +171,8 @@ def Snake():
         while not game_over:
  
             while game_close == True:
-                screen.fill(blue)
-                message("You Lost! Press C-Play Again or Q-Quit", red)
+                screen.fill(black)
+                message("You Lost! Press C-Play Again or ESC to go back", red)
                 Your_score(Length_of_snake - 1)
                 pygame.display.update()
  
@@ -183,6 +183,10 @@ def Snake():
                             game_close = False
                         if event.key == pygame.K_c:
                             gameLoop()
+                        if event.type == KEYDOWN:
+                            if event.key == K_ESCAPE:
+                                running = False
+                                game()
  
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -205,7 +209,7 @@ def Snake():
                 game_close = True
             x1 += x1_change
             y1 += y1_change
-            screen.fill(blue)
+            screen.fill(red)
             pygame.draw.rect(screen, green, [foodx, foody, snake_block, snake_block])
             snake_Head = []
             snake_Head.append(x1)
