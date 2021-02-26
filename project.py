@@ -4,7 +4,7 @@ mainClock = pygame.time.Clock()
 from pygame.locals import *
 pygame.init()
 pygame.display.set_caption("The Best Games")
-screen = pygame.display.set_mode((500,500),0,32)
+screen = pygame.display.set_mode((500,400),0,32)
 
 
 font = pygame.font.SysFont(None, 20)
@@ -131,7 +131,7 @@ def Snake():
     snake_speed = 15
 
     dis_width = 500
-    dis_height = 500
+    dis_height = 400
  
     font_style = pygame.font.SysFont("bahnschrift", 15)
     score_font = pygame.font.SysFont("comicsansms", 35)
@@ -285,13 +285,13 @@ def Table_Tennis():
             if (paddle2_y > 130):
                     paddle2_y += -5
         if keys[pygame.K_DOWN]:
-            if (paddle2_y < 465):
+            if (paddle2_y < 365):
                     paddle2_y += 5
         if keys[pygame.K_w]:
             if (paddle1_y > 130):
                     paddle1_y += -5
         if keys[pygame.K_s]:
-            if (paddle1_y < 465):
+            if (paddle1_y < 365):
                     paddle1_y += 5
 
         if round_end:
@@ -337,12 +337,16 @@ def Table_Tennis():
 
             if (ball_x < 60 and ball_x > 50) and (ball_y < paddle1_y + 40 and ball_y > paddle1_y): 
                 ball_x_change *= -1
+                if (ball_x_change == 1):
+                    ball_x_change *= 2
                         
             if (ball_x > 450 and ball_x < 460) and (ball_y < paddle2_y + 40 and ball_y > paddle2_y):
                 ball_x_change *= -1
+                if (ball_x_change == 1):
+                    ball_x_change *= 2
                 
                 
-            if (ball_y < 125 or ball_y > 496):
+            if (ball_y < 125 or ball_y > 396):
                 ball_y_change *= -1
                 
             ball_x += ball_x_change
